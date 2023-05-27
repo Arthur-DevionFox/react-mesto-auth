@@ -10,6 +10,11 @@ import AddPlacePopup from "../components/AddPlacePopup";
 import DeletePopup from "../components/DeletePopup";
 import ImagePopup from "../components/ImagePopup";
 import {CurrentUserContext} from "../contexts/CurrentUserContext";
+import {Route, Navigate, Routes, BrowserRouter} from 'react-router-dom'
+import ProtectedRoute from "./ProtectedRoute";
+import Login from "./Login";
+import Register from "./Register";
+import ProtectedElement from "./ProtectedRoute";
 
 
 function App() {
@@ -22,15 +27,20 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({})
   const [cards, setCards] = React.useState([])
 
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [headerEmail, setHeaderEmail] = React.useState('Что?');
+
 
   React.useEffect(() => {
-    Promise.all([api.getProfileInfo(), api.getInitialCards()]).then(([profileInfo, card]) => {
-      setCurrentUser(profileInfo);
-      setCards(card);
-    }).catch((err) => {
-      console.error(err);
-    });
-  }, []);
+    if(loggedIn) {
+      Promise.all([api.getProfileInfo(), api.getInitialCards()]).then(([profileInfo, card]) => {
+        setCurrentUser(profileInfo);
+        setCards(card);
+      }).catch((err) => {
+        console.error(err);
+      });
+    }
+  }, [loggedIn]);
 
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false)
@@ -133,20 +143,33 @@ function App() {
 
 
   return (
+
       <CurrentUserContext.Provider value={currentUser}>
   <div className={"page"}>
-    <Header />
+    <Header loggedIn={loggedIn} headerEmail={headerEmail} />
+    <BrowserRouter>
+      <Routes>
+      <Route path={'/sign-in'} element={<Login />}/>
 
-    <Main
-        cards = {cards}
-        onEditProfile = {handleEditProfileClick}
-        onAvatarPlace = {handleEditAvatarClick}
-        onAddPlace = {handleAddPlaceClick}
-        onCardClick = {handleCardClick}
-        onCardLike={handleCardLike}
-        onCardDelete={handleCardDelete}
-    />
+      <Route path={'/sign-up'} element={<Register />}/>
 
+      <Route path={'/'}
+        element={
+        <ProtectedRoute
+            component={Main}
+            cards = {cards}
+            onEditProfile = {handleEditProfileClick}
+            onAvatarPlace = {handleEditAvatarClick}
+            onAddPlace = {handleAddPlaceClick}
+            onCardClick = {handleCardClick}
+            onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
+            loggedIn={loggedIn}
+        />
+        }
+      >
+    </Route>
+      </Routes>
     <Footer />
 
     <EditProfilePopup
@@ -177,9 +200,11 @@ function App() {
       onClose = {closeAllPopups}
       onCloseClick = {closeByClick}
     />
+    </BrowserRouter>
 
   </div>
         </CurrentUserContext.Provider>
+
   );
 }
 
