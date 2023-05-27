@@ -1,7 +1,7 @@
 import React from "react";
 import AuthForm from "./AuthForm";
 
-export default function Login(props) {
+function Login(props) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
@@ -51,3 +51,5 @@ export default function Login(props) {
         </section>
     )
 };
+
+export default Login

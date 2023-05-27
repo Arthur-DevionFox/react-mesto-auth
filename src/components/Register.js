@@ -1,7 +1,7 @@
 import React from "react";
 import AuthForm from "./AuthForm";
 
-export default function Register(props) {
+function Register(props) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
@@ -12,7 +12,7 @@ export default function Register(props) {
     }
 
     function handleSubmit(e) {
-        e.preventDefault();	// Запрещаем браузеру переходить по адресу формы
+        e.preventDefault();
         props.register(password, email);
     }
     return(
@@ -52,3 +52,5 @@ export default function Register(props) {
         </section>
     )
 };
+
+export default Register
