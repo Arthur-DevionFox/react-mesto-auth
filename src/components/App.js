@@ -222,7 +222,6 @@ function App() {
     <Header loggedIn={loggedIn} headerEmail={headerEmail} logout={handleLogout}/>
       <Routes>
 
-
       <Route path={'/sign-in'} element={<Login setHeaderEmail={setHeaderEmail} login={handleLogin}/>}/>
 
       <Route path={'/sign-up'} element={<Register setHeaderEmail={setHeaderEmail} register={handleRegister} />}/>
