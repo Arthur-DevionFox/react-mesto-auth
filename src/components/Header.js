@@ -1,7 +1,7 @@
 import React from 'react';
-import {Route, Link, Routes} from 'react-router-dom';
+import {Link, Route, Routes} from 'react-router-dom';
 
-function Header({ loggedIn , headerEmail, logout }) {
+function Header({loggedIn, headerEmail, logout}) {
 
     function handleClickLogout(e) {
         e.preventDefault();
@@ -10,18 +10,22 @@ function Header({ loggedIn , headerEmail, logout }) {
 
     return (
         <header className="header">
-            <img alt="Лого" className={"header__logo"} src={require('../images/Vector.svg').default} />
+            <img alt="Лого" className={"header__logo"} src={require('../images/Vector.svg').default}/>
             <div className={"header__auth"}>
                 {loggedIn && <p className={"header__auth-email"}>{headerEmail}</p>}
-                    <Routes>
+                <Routes>
 
-                        <Route path={'/sign-in'} element={<Link className={"header__auth-button"} to={'/sign-up'}>Регистрация</Link>}/>
+                    <Route path={'/sign-in'}
+                           element={<Link className={"header__auth-button"} to={'/sign-up'}>Регистрация</Link>}/>
 
-                        <Route path={'/sign-up'} element={<Link className={"header__auth-button"} to={'/sign-in'}>Войти</Link>} />
+                    <Route path={'/sign-up'}
+                           element={<Link className={"header__auth-button"} to={'/sign-in'}>Войти</Link>}/>
 
-                        <Route exact path="/" element={<Link className={"header__auth-button header__auth-button_type_authorized"} to={'/sign-in'} onClick={handleClickLogout} >Выйти</Link>}/>
+                    <Route exact path="/"
+                           element={<Link className={"header__auth-button header__auth-button_type_authorized"}
+                                          to={'/sign-in'} onClick={handleClickLogout}>Выйти</Link>}/>
 
-                    </Routes>
+                </Routes>
             </div>
         </header>
     )

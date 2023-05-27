@@ -3,9 +3,9 @@ import PopupWithForm from "./PopupWithForm";
 function DeletePopup() {
     return (
         <PopupWithForm
-            title = {'Вы уверены?'}
-            name = {'delete'}
-            id = {'delete'}
+            title={'Вы уверены?'}
+            name={'delete'}
+            id={'delete'}
         >
             <div className={"popup__container popup__container_delete"}>
                 <p className={"popup__text"}>Вы уверены?</p>

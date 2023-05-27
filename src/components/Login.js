@@ -7,7 +7,9 @@ function Login(props) {
 
     function handleUpdateEmail(e) {
         setEmail(e.target.value);
-    }function handleUpdatePassword(e) {
+    }
+
+    function handleUpdatePassword(e) {
         setPassword(e.target.value);
     }
 
@@ -15,7 +17,8 @@ function Login(props) {
         e.preventDefault();
         props.login(password, email);
     }
-    return(
+
+    return (
         <section className="auth">
             <AuthForm
                 name={'login'}
@@ -50,6 +53,6 @@ function Login(props) {
             </AuthForm>
         </section>
     )
-};
+}
 
 export default Login

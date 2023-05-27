@@ -1,5 +1,6 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
+
 function EditAvatarPopup(props) {
 
     const ref = React.useRef()
@@ -16,18 +17,20 @@ function EditAvatarPopup(props) {
         ref.current.value = '';
     }, [props.isOpen]);
 
-    return ( <PopupWithForm
-        title = {'Обновить аватар'}
-        name = {'avatar'}
-        id = {'avatar'}
-        isOpen = {props.isOpen}
-        onClose = {props.onClose}
-        onCloseClick = {props.onCloseClick}
-        buttonText = {'Сохранить'}
+    return (<PopupWithForm
+        title={'Обновить аватар'}
+        name={'avatar'}
+        id={'avatar'}
+        isOpen={props.isOpen}
+        onClose={props.onClose}
+        onCloseClick={props.onCloseClick}
+        buttonText={'Сохранить'}
         onSubmit={handleSubmit}
-        >
-            <input ref={ref} id="avatar_link" className={"popup__input popup__input_type_avatar"} placeholder="Ссылка" type="url" name="avatar" required/>
-            <span className={"popup__input-error input-link-error"}></span>
-    </PopupWithForm> )
+    >
+        <input ref={ref} id="avatar_link" className={"popup__input popup__input_type_avatar"} placeholder="Ссылка"
+               type="url" name="avatar" required/>
+        <span className={"popup__input-error input-link-error"}></span>
+    </PopupWithForm>)
 }
+
 export default EditAvatarPopup

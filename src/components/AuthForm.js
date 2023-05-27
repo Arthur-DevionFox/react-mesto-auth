@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 function AuthForm(props) {
-    return(
+    return (
         <div className="auth__container">
             <form className={`auth__form auth__form_${props.name}" {name}="${props.name}`} onSubmit={props.onSubmit}>
                 <h2 className={"auth__title"}>{props.title}</h2>

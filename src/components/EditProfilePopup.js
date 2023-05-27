@@ -42,13 +42,16 @@ function EditProfilePopup(props) {
             form={'profileData'}
             title={'Редактировать профиль'}
             buttonText={'Сохранить'}
-            onSubmit = {handleSubmit}
+            onSubmit={handleSubmit}
         >
-            <input id={"name"} className={"popup__input popup__input_type_name"} onChange={handleNameChange} placeholder={"Введите имя"} minLength="2" maxLength="40" type={"text"} value={name} required/>
+            <input id={"name"} className={"popup__input popup__input_type_name"} onChange={handleNameChange}
+                   placeholder={"Введите имя"} minLength="2" maxLength="40" type={"text"} value={name} required/>
             <span className={"popup__input-error input-name-error"}></span>
-            <input id={"about"} className={"popup__input popup__input_type_profession"} onChange={handleDescriptionChange} placeholder={"Введите род деятельности"} minLength="2" maxLength="200" value={description} name={"description"} required/>
+            <input id={"about"} className={"popup__input popup__input_type_profession"}
+                   onChange={handleDescriptionChange} placeholder={"Введите род деятельности"} minLength="2"
+                   maxLength="200" value={description} name={"description"} required/>
             <span className={"popup__input-error input-profession-error"}></span>
-    </PopupWithForm> )
+        </PopupWithForm>)
 }
 
 export default EditProfilePopup

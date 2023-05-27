@@ -10,7 +10,7 @@ function Main(props) {
         <main>
             <section className={"profile"}>
                 <button className={"profile__avatar-btn"} onClick={props.onAvatarPlace}>
-                    <img className={"profile__avatar"} src={currentUser.avatar} alt={currentUser.name} />
+                    <img className={"profile__avatar"} src={currentUser.avatar} alt={currentUser.name}/>
                 </button>
                 <div className={"profile__info"}>
                     <div className={"profile__paragraphs"}>
@@ -40,4 +40,5 @@ function Main(props) {
         </main>
     )
 }
+
 export default Main

@@ -7,7 +7,9 @@ function Register(props) {
 
     function handleUpdateEmail(e) {
         setEmail(e.target.value);
-    }function handleUpdatePassword(e) {
+    }
+
+    function handleUpdatePassword(e) {
         setPassword(e.target.value);
     }
 
@@ -15,7 +17,8 @@ function Register(props) {
         e.preventDefault();
         props.register(password, email);
     }
-    return(
+
+    return (
         <section className="auth">
             <AuthForm
                 name={'login'}
@@ -51,6 +54,6 @@ function Register(props) {
             </AuthForm>
         </section>
     )
-};
+}
 
 export default Register
