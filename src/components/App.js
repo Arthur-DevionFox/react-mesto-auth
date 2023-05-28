@@ -214,7 +214,6 @@ function App() {
         });
     }
 
-
     return (
 
         <CurrentUserContext.Provider value={currentUser}>
@@ -244,8 +243,9 @@ function App() {
                            }
                     />
 
-                    <Route path={'/'} element={<ProtectedRoute path={'/'} element={Footer}/>}/>
                 </Routes>
+
+                <Footer />
 
                 <EditProfilePopup
                     isOpen={isEditProfilePopupOpen}
